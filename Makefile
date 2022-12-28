@@ -4,5 +4,5 @@ all: $(DIRS)
 $(DIRS):
 	$(MAKE) -C $@
 
-.PHONY: all $(DIRS)
+.PHONY: all clean $(DIRS)
 
