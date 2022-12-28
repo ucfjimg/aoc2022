@@ -1,0 +1,7 @@
+#/bin/bash
+make || exit 1
+
+echo challenge 19
+
+time ./19a < input.txt | diff - 19a.txt
+time ./19b < input.txt | diff - 19b.txt

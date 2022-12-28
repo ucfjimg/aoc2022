@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for i in $(seq 1 25)
+do
+    fn=$i/Makefile
+    echo all: ${i}a ${i}b > $fn
+    echo >> $fn
+    echo CFLAGS=-O3 >> $fn
+    echo >> $fn
+    echo ${i}a: ${i}a.c >> $fn
+    echo ${i}b: ${i}b.c >> $fn
+    echo >> $fn
+    echo clean: >> $fn
+    echo -e \\t-rm ${i}a ${i}b >> $fn
+    echo >> $fn
+    echo .PHONY: all clean >> $fn
+    
+    fn=$i/run
+
+    echo '#/bin/bash' > $fn
+    echo 'make || exit 1' >> $fn
+    echo >> $fn
+    echo echo challenge $i >> $fn
+    echo >> $fn
+    echo "time ./${i}a < input.txt | diff - ${i}a.txt" >> $fn
+    echo "time ./${i}b < input.txt | diff - ${i}b.txt" >> $fn
+
+    chmod +x $i/run
+
+    fn=$i/.gitignore
+    echo ${i}a > $fn
+    echo ${i}b >> $fn
+done
+

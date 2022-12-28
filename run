@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in $(seq 1 25)
+do
+    pushd $i > /dev/null
+    ./run
+    popd > /dev/null
+done
+
