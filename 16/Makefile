@@ -1,4 +1,4 @@
-all: 16a 16b
+all: 16a 16b 
 
 CFLAGS=-O3
 
