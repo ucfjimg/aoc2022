@@ -2,6 +2,17 @@
 #include <stdio.h>
 #include <string.h>
 
+// 8b - the input is a rectangular map with a grid of heights of
+//      trees. now we want to find the tree with the best scenic
+//      view, as scored by the product of the visible trees in the
+//      four cardinal directions.
+//
+// idea: for each tree in the grid, walk outward to the edge in all
+//       four directions counting visible trees. keep the best score.
+//
+// https://adventofcode.com/2022/day/8
+//
+
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 
 static int height[100][100];

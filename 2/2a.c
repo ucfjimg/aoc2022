@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+// 2a - simulate rock, paper, scissors based on the input
+//      data, given simple scoring rules.
+//
+// idea: simple simulation.
+//
+// https://adventofcode.com/2022/day/2
+//
 // A=X=Rock, B=Y=Paper, C=Z=Scissors
 
 int main(int argc, char *argv[])

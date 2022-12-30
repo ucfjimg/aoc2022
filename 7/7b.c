@@ -3,6 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 7b - the input is the same as 7a, but the goal is now to find a
+//      a directory to delete to free up a certain amount of space.
+//
+// idea: build the directory tree as in 7a, then search for the best
+//       directory to delete; i.e. the smallest one that gives
+//       the needed space.
+//
+// https://adventofcode.com/2022/day/7
+//
 
 typedef struct dirnode_t dirnode_t;
 struct dirnode_t {

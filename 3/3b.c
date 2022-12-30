@@ -3,6 +3,17 @@
 #include <stdio.h>
 #include <string.h>
 
+// 3b - now we're looking for a common item that appears 
+//      across each group of 3 lines, and adding up the priorities
+//      of those.
+//
+// idea: represent each line by one bit; in an array indexed by
+//       all possible letters, set the bits for all letters found
+//       in the corresponding line. then, find the one letter
+//       with all 3 bits set.
+//
+// https://adventofcode.com/2022/day/3
+//
 #define MAX_PRI 52
 
 int to_pri(char ch)
@@ -28,6 +39,10 @@ int main()
     int pri;
     int sum = 0;
 
+    // now each entry of the `pri` array is a bitmask
+    // indicating if each item has been seen in row 0, 1, 
+    // or 2 in the current group.
+    //
     memset(pris, 0, sizeof(pris));
     while (fgets(line, sizeof(line), stdin)) {
         len = strlen(line);

@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
+// 5b - the input is an initial state of a list of stacks
+//      of crates, followed by moves which take the top
+//      `n` crates from one stack and move them to 
+//      a new stack. Unlike 5a, the crates are moved all at
+//      once, so their order is maintained. The answer is 
+//      the letters of the crates on the top of each stack 
+//      after all the moving.
+//
+// idea: straight simulation; keep an array of stacks 
+//       and move crates between them.
+//
+// https://adventofcode.com/2022/day/5
+//
 struct stack_t {
     int top;
     char crates[102];

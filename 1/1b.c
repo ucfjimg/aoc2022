@@ -2,6 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 1b - as 1a, but now we want the product of the 3 largest
+//      sums.
+//
+// idea: keep an array of the section sums, sort it, and
+//       multiply the top 3 sums.
+//
+// https://adventofcode.com/2022/day/1
+//
 int comp(const void *l, const void *r)
 {
     int li = *(const int *)l;

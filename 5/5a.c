@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
+// 5a - the input is an initial state of a list of stacks
+//      of crates, followed by moves which take the top
+//      `n` crates from one stack and move them to 
+//      a new stack. The crates are moved one at a time,
+//      so their order will be reversed on the top of the 
+//      new stack. The answer is the letters of the crates
+//      on the top of each stack after all the moving.
+//
+// idea: straight simulation; keep an array of stacks 
+//       and move crates between them.
+//
+// https://adventofcode.com/2022/day/5
+//
+
 struct stack_t {
     int top;
     char crates[102];

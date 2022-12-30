@@ -3,6 +3,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 7a - the input is a list of `cd` and `ls` commands, followed by 
+//      the corresponding output. The task is to return the total
+//      size of all directories using less than 10,000 bytes.
+//
+// idea: mainly an exercise in parsing and adding up the size
+//       of each directory. since the size of a directory includes
+//       the size of all subdirectories, build the actual tree
+//       and then bubble up sizes from the leaves to the root
+//       to get the recursive size of each directory, then search
+//       for directories which fit the size criteria.
+//
+// https://adventofcode.com/2022/day/7
+//
 
 typedef struct dirnode_t dirnode_t;
 struct dirnode_t {

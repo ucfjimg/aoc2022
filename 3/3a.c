@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
+// 3a - we're given the content of rucksacks; each line
+//      contains two compartments of stuff. find the 
+//      item that's in both compartments and add the 
+//      priority (score based on item letter)
+//
+// idea: for the first half of a line, built a set of
+//       seen characters; for the second half, find the 
+//       character that's in the set. since it's a small
+//       number of letters, the set is just an array.
+//
+// https://adventofcode.com/2022/day/3
+//
+
 #define MAX_PRI 52
 
 int to_pri(char ch)

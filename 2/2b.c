@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+// 2b - like 2a, except we're now told whether to win,
+//      lose, or draw as opposed to the actual move.
+//
+// idea: simple simulation.
+//
+// https://adventofcode.com/2022/day/2
+//
 // A=Rock, B=Paper, C=Scissors
 // X=Lost, Y=Draw, C=Win
 

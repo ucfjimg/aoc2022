@@ -2,6 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 1a - sum continguous numbers, one per line, separated
+//      by blank lines, and return the largest sum.
+//
+// idea: read in the numbers, sum each section, keep track 
+//       of the max.
+//
+// https://adventofcode.com/2022/day/1
+//
 int main()
 {
     int best = 0;

@@ -2,6 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 9b - the input is a list of move pairs (dir, len) which
+//      means to move right, left, up or down for `len`
+//      steps. the thing being moved is the head of a rope;
+//      the tail follows according to given rules. the 
+//      value to be computed is the number of unique locations
+//      visited by the tail.
+//
+//      in part b, the rope is modified to have 10 knots instead 
+//      of just the head and tail - each knot is moved according
+//      to the previous knot's motion.
+//
+// idea: straight simulation of the rope, keeping a set of the 
+//       points visited by the tail in a 2D array. the result
+//       is the size of the set.
+//
+// https://adventofcode.com/2022/day/9
+//
 #define MIN(a,b)  ((a) < (b) ? (a) : (b))
 #define MAX(a,b)  ((a) > (b) ? (a) : (b))
 

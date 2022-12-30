@@ -2,6 +2,17 @@
 #include <stdio.h>
 #include <string.h>
 
+// 8a - the input is a rectangular map with a grid of heights of
+//      trees. the output is the number of trees visible from
+//      outside the grid.
+//
+// idea: for each grid square just outside the rectangle, walk
+//       across the grid finding visible trees. keep the visible
+//       trees in a set (a 2D array of the same size as the grid)
+//       and then count up the size of the set.
+//
+// https://adventofcode.com/2022/day/8
+//
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 
 static int height[100][100];
