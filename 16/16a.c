@@ -4,6 +4,31 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 16a - a maze of twisty little passages all alike... except that some of them
+//       have valves in them. opening each valve contributes a rate of flow to
+//       a total flow. the flow from each valve is the valve's rate times the 
+//       number of minutes the valve is turned on. the goal is, within a given
+//       time frame, to turn on the valves in the order which will optimize the
+//       total flow. traveling along each passage takes one minute, and turning
+//       on a valve takes one minute.
+//
+// idea: this is a path traversal problem, but the simple recursive solution is
+//       time infeasible without speedups. So, as well as that:
+//
+//       1. Use Floyd-Warshall to find the shortest distance between each pair
+//          of valves. Intermediate passages are only relevant as far as 
+//          traversal time, so we can compress the graph to not include them
+//          and end up with a smaller weighted graph rather than a larger 
+//          unweighted one.
+//
+//       2. In each recursion step, compute the best flow we could get if we 
+//          could turn on all remaining valves at that moment. If that total
+//          would not exceed the best solution so far, prune recursin at that 
+//          point.
+//
+// https://adventofcode.com/2022/day/16
+//
+
 #define TIME 30
 #define MAX_NODES 50
 

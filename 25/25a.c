@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
+// 25a - the input is a bunch of numbers in a version of base 5
+//       where the representation contains negative as well as 
+//       positive digit values. we must add up all of the given
+//       numbers and convert the result back into the base 5
+//       representation.
+//
+// idea: this is just base conversion, but the negative digit values
+//       mean that when converting from another base, a negative
+//       digit will require a carry into the next digit to account for 
+//       the negative digits. for example, there is no 4 digit, so 4 is
+//       represented as a -1 in the 1's place, and a 1 in the 5's place.
+//
+// https://adventofcode.com/2022/day/25
+//
+
 int main()
 {
     char line[100];

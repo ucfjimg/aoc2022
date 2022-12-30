@@ -4,6 +4,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 22b - the input is a 2D maze, but it isn't rectangular. the
+//       maze is a polygon made up of a bunch of rectangular
+//       regions. we are to traverse the maze given a list of 
+//       turns are distances to move. there are obstacles at 
+//       which we stop until a turn moves us in a direction that
+//       is free. when we hit an edge, we wrap around to the 
+//       edge on the other size of the region.
+//
+//       in part b, we are told that the 2D polygon folds in 3D 
+//       into a cube. we still walk the maze, but when we hit an 
+//       edge, we must move onto the proper face of the cube on
+//       the other side of the edge. (this may also change the
+//       direction we face.)
+//
+// idea: this is a simple maze walk simulation. while tedious,
+//       the easiest solution seemed to be to figure out the cube
+//       geometry by hand and hardcode it. the geometry of the 
+//       test case and the actual input is different, so two 
+//       different tables are needed, one per case.
+//
+// https://adventofcode.com/2022/day/22
+//
+
 static char maze[201][201];
 static int lens[201];
 static int lines;

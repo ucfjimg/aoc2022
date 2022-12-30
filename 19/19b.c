@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 19a - the input is a list of blueprints; each blueprint says how to
+//       make robots. there are 4 types of robots; each produces a 
+//       type of resource. each robot has resource requirements to 
+//       build. each tick, existing robots produce one of their resource
+//       type, and you can build one of any type of robot given enough
+//       of the right resources.
+//
+//       from part a, we now have a longer time limit, but we only have
+//       to simulate the first three blueprints.
+//
+// idea: with the same simulation from part a, part b runs quickly.
+//
+// https://adventofcode.com/2022/day/19
+//
 #define MIN(x,y) ((x) < (y) ? (x) : (y))
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 

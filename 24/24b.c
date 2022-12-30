@@ -4,6 +4,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 24b - the input is a maze with obstacles; we are to find a path
+//       from the start to the end. however, the obstacles are moving
+//       in a fixed pattern: across the maze or up and down, wrapping
+//       around the edges.
+//
+//       in part b, we have to go from the start to the end, back to
+//       the start, and then back to the end again. this doesn't 
+//       really change anything except walking the maze for longer.
+//
+// idea: we BFS through the maze, but treat the maze as 3D with the 
+//       third dimension being time. given the way the obstacles move,
+//       we can compute the amount of time it takes for their pattern
+//       to repeat, so time doesn't just infinitely repeat, there are 
+//       a relatively small number of different mazes. in some cases,
+//       all of our moves may be blocks, so staying in place is a required
+//       valid move.
+//
+// https://adventofcode.com/2022/day/24
+//
+
 typedef struct storm_t storm_t;
 struct storm_t 
 {

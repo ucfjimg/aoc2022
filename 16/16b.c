@@ -4,6 +4,32 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 16b - a maze of twisty little passages all alike... except that some of them
+//       have valves in them. opening each valve contributes a rate of flow to
+//       a total flow. the flow from each valve is the valve's rate times the 
+//       number of minutes the valve is turned on. the goal is, within a given
+//       time frame, to turn on the valves in the order which will optimize the
+//       total flow. traveling along each passage takes one minute, and turning
+//       on a valve takes one minute.
+//
+//       in part b, we have slightly less time, but we have a helper which can 
+//       traverse the cave system at the same time. 
+//
+// idea: we make the observation that we can partition the problem: each actor
+//       will open some subset of the valves. for any partition, the total flow
+//       is the sum of the best flows either actor can achieve in their partition.
+//
+//       for each paritition, we build the subgraph of just the valves in that
+//       partition as described in in part a and solve it. we solve for all
+//       possible subsets of the valves, and then find and add up the matching
+//       partitions.
+//
+// note: this works but is still by far the slowest solution in the entire set
+//       at about 49 seconds. be nice to optimize further. 
+//
+// https://adventofcode.com/2022/day/16
+//
+
 #define TIME 26
 #define MAX_NODES 50
 

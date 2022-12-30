@@ -3,6 +3,20 @@
 #include <stdio.h>
 #include <string.h>
 
+// 17a - there are several fixed shapes of pieces made of rock which can fall
+//       down a fixed width column. along the way, there are gas gusts which
+//       push the piece left or right if it can move further in that direction.
+//       unlike a certain video game the problem is obviously based on, the
+//       pieces cannot rotate. the sequence of the pieces is fixed, and the 
+//       input gives an ever-repeating cycle of which direction the pieces
+//       are nudged on each step while falling. we need to compute the total
+//       height of the pile after 2022 pieces have stopped falling.
+//
+// idea: simulation of the game.
+//
+// https://adventofcode.com/2022/day/17
+//
+
 typedef struct pt_t pt_t;
 struct pt_t  
 {

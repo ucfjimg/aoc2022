@@ -4,6 +4,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 21b - the input is a list of simple expressions involving
+//       variables. each variable is assigned either a constant
+//       or a binary operator (+, -, *, /) on two variables.
+//       the answer is the value assigned to the variable named
+//       `root`.
+//
+//       in part b, the left and right subtrees of `root` must
+//       be equal; we must compute the value of a leaf node
+//       (the variable `humn`) to make the equality true.
+//
+// idea: first, we use the evaluation from 21a to give all variables
+//       values given that all of their dependencies are known.
+//       then we perform inverse evaluation working up from `humn` to 
+//       `root`. at each step, we first evaluate the parent of the 
+//       variable. we will then know the parent and the variable's peer
+//       in the binary operation, and can compute the variable's value
+//       based on the inverse of the given operation.
+//
+// https://adventofcode.com/2022/day/21
+//
+
 typedef struct expr_t expr_t;
 struct expr_t {
     char name[5];

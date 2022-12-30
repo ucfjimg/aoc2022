@@ -3,11 +3,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 22b - the input is a 2D maze, but it isn't rectangular. the
+//       maze is a polygon made up of a bunch of rectangular
+//       regions. we are to traverse the maze given a list of 
+//       turns are distances to move. there are obstacles at 
+//       which we stop until a turn moves us in a direction that
+//       is free. when we hit an edge, we wrap around to the 
+//       edge on the other size of the region.
+//
+// idea: this is a simple maze walk simulation.
+//
+// https://adventofcode.com/2022/day/22
+//
+
 static char maze[201][201];
 static int lens[201];
 static int lines;
 static char dir[10000];
-
 
 int main()
 {

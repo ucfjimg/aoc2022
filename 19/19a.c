@@ -2,6 +2,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 19a - the input is a list of blueprints; each blueprint says how to
+//       make robots. there are 4 types of robots; each produces a 
+//       type of resource. each robot has resource requirements to 
+//       build. each tick, existing robots produce one of their resource
+//       type, and you can build one of any type of robot given enough
+//       of the right resources.
+//
+//       the goal is to figure out the maxmimum of one type of resource
+//       (geodes) that can be produced given each blueprint.
+//
+// idea: the simulation can be done by recursive expansion, but needs to 
+//       be done carefully to work in reasonable time.
+//
+//       1. rather than simulating each time tick and figuring out what 
+//          robot to build based on available resources, figure out for
+//          each robot how long it will take to get the resources to build
+//          it and then skip the simulation forward that many ticks. this
+//          cuts down on the number of recursion levels.
+//
+//       2. figure out, at each level of recursion, the number of geodes we
+//          could possibly build under best case conditions (i.e. assume we
+//          have the resources to build a geode robot on every time until
+//          the end.) if that gives us a number less than the best we've seen
+//          so far, prune that part of the recursion. this cuts down the 
+//          search space a _lot_.
+//
+// https://adventofcode.com/2022/day/19
+//
+
 #define MIN(x,y) ((x) < (y) ? (x) : (y))
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 

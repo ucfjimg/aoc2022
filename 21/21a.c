@@ -3,6 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 21a - the input is a list of simple expressions involving
+//       variables. each variable is assigned either a constant
+//       or a binary operator (+, -, *, /) on two variables.
+//       the answer is the value assigned to the variable named
+//       `root`.
+//
+// idea: there are no circular dependencies, so we can just 
+//       recursively evaluate. if the variable we are evaluating
+//       already has a value (constant or already evaled) just
+//       return it. else recursively evaluate the arguments and 
+//       then give it a value.
+//
+// https://adventofcode.com/2022/day/21
+//
+
 typedef struct expr_t expr_t;
 struct expr_t {
     char name[5];

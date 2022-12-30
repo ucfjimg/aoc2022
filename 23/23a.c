@@ -6,6 +6,24 @@
 #define MIN(x,y) ((x) < (y) ? (x) : (y))
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 
+// 23a - the input is a 2D grid map populated by elves. the goal
+//       is to move them apart so they aren't near other elves.
+//       there are rules for moving them based on who else is 
+//       nearby. As in Conway's game of life, all the decisions
+//       are made before anyone moves. Then, if more than one elf
+//       would occupy a space when actually moving, nobody moves
+//       into that space. we simulate this for 10 rounds.
+//
+// idea: since the grid is constantly growing, we don't represent
+//       positions as a 2D array but a set of points. when elves
+//       are deciding to move, their proposed destinations are put
+//       into a second set. any elf which proposes a destination 
+//       in the second set is marked as not moving (as well as the
+//       original elf that first put that space into the set).
+//
+// https://adventofcode.com/2022/day/23
+//
+
 typedef struct pt_t pt_t;
 struct pt_t {
     int x;

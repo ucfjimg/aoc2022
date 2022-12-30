@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 18a - the inputs is a list of 3D coordinates representing the positions of
+//       cubes in space. find the number of cube sides that are not face-to-face
+//       with other sides.
+//
+// idea: keep the cubes in a 3D array so finding if any cube exists is a simple
+//       lookup. for each cube, check to see if, in each axis, there is a matching
+//       cube in the increasing direction for that axis. since we only check one
+//       direction on each axis, we only find each pair of matching faces once.
+//       each cube has 6 sides, so we can just subtract off the shared sides.
+//
+// https://adventofcode.com/2022/day/18
+//
+
 typedef int pt_t[3];
 
 #define SIZE 24

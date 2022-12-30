@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 18b - the inputs is a list of 3D coordinates representing the positions of
+//       cubes in space. find the number of cube sides that are not face-to-face
+//       with other sides.
+//
+//       in part b, we want to find just the exterior boundary, discounting any
+//       space totally enclosed inside the cubes.
+//
+// idea: mark each point in space as initially empty or contains a cube. then
+//       do a 3D floodfill from a point known to be exterior to all cubes and mark
+//       that space as exterior. we can now find boundaries at any point where
+//       an exerior location meets a cube.
+//
+// https://adventofcode.com/2022/day/18
+//
+
 typedef int pt_t[3];
 
 #define SIZE 24
