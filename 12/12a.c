@@ -4,6 +4,18 @@
 #include <stdio.h>
 #include <string.h>
 
+// 12a - we're given a grid of heights, and rules about 
+//       traversing it. we can move to any adjacent square
+//       of equal or lower height, but if the adjacent square 
+//       is higher, we can only move to it if the height
+//       increase is at most 1. we must traverse the grid
+//       to the highest point in the least number of steps.
+//
+// idea: this is a simple graph traversal problem.
+//
+// https://adventofcode.com/2022/day/12
+//
+
 static char grid[200][200];
 static char seen[200][200];
 static int dist[200][200];
@@ -54,7 +66,6 @@ int shortest_path(int startrow, int startcol)
 
         left--;
         seen[currrow][currcol] = 1;
-
 
         assert(best != 2 * rows * cols);
 

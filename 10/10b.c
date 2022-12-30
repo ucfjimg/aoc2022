@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
+// 10b - the input is a set of nop and add instructions with
+//       strict timing. nop takes one cycle; add takes two
+//       cycles and updates a register (X). in this part,
+//       X is a sprite register a raster is moving across
+//       a CRT. if the value of X is near the raster position,
+//       a pixel is drawn. the output is a series of characters
+//       drawn on the screen.
+//
+// idea: simulate the instructions and draw the raster as we go.
+//
+// https://adventofcode.com/2022/day/10
+//
+
 int crt(int crtx, int pixx)
 {
     if (pixx >= crtx-1 && pixx <= crtx+1) {

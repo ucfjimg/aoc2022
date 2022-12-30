@@ -4,6 +4,25 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 13b - the input is a list of nested lists, one per line.
+//       given a recursive definition of a comparison operation
+//       for two lists, we are to count the number of pairs of 
+//       lists in which the first list is less than the second
+//       list.
+//
+//       in part b, we have to sort all the lists and find
+//       the indices of two key lists post-sort.
+//
+// idea: since we're given a recursive definition for the 
+//       comparison operator, we'll write a recursive list
+//       comparison function.
+//
+//       we wrote the comparison function in part a, here
+//       we can just use it with qsort().
+//
+// https://adventofcode.com/2022/day/13
+//
+
 typedef struct pair_t pair_t;
 struct pair_t {
     char *left;

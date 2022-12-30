@@ -2,6 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 14b - the input is a list of vectors for drawing a 2D map.
+//       the map is vertical and sand is falling in from the top;
+//       it piles up on the described walls. we are to count how
+//       much sand has to pile up before it starts falling through
+//       bottom of the grid into empty space.
+//
+//       in part b, there is a floor at the bottom, and we have to
+//       keep simulating until the top of the sand pile blocks the
+//       hole the sand is falling through.
+//
+//
+// idea: simple simulation with checking against the map bounds.
+//
+// https://adventofcode.com/2022/day/14
+//
 #define MIN(x,y) ((x) < (y) ? (x) : (y))
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 

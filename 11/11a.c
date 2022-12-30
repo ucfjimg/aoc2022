@@ -3,6 +3,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 11a - there are a set of monkeys, each with a queue of objects.
+//       each object has a value; each monkey will perform a
+//       math operation on the value and, based on divisiblity
+//       of the result by another number, will throw the object 
+//       to one of two other monkeys. the objet's value is
+//       changed by the operation. the desired result is the 
+//       total number of times a monkey inspects an item over
+//       20 rounds (each round being each monkey having a chance
+//       to throw things.)
+//
+// idea: straight simulation of the 20 rounds.
+//
+// https://adventofcode.com/2022/day/11
+//
 #define MAX_ITEMS 100
 
 typedef struct monkey_t monkey_t;

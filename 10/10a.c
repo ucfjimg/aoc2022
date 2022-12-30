@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
+// 10a - the input is a set of nop and add instructions with
+//       strict timing. nop takes one cycle; add takes two
+//       cycles and updates a register (X). the output is
+//       the cycle times X for cycles 20, 40, ... 240.
+//
+// idea: simulate the instructions and save the value of
+//       X on every cycle. use that series of values to 
+//       compute the answer.
+//
+// https://adventofcode.com/2022/day/10
+//
+
 int main()
 {
     int clock = 1;

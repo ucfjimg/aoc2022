@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 13a - the input is a list of nested lists, one per line.
+//       given a recursive definition of a comparison operation
+//       for two lists, we are to count the number of pairs of 
+//       lists in which the first list is less than the second
+//       list.
+//
+// idea: since we're given a recursive definition for the 
+//       comparison operator, we'll write a recursive list
+//       comparison function.
+//
+// https://adventofcode.com/2022/day/13
+//
+
 typedef struct pair_t pair_t;
 struct pair_t {
     char *left;

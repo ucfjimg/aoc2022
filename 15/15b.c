@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 15b - the input is a list of 2D sensor positions; the sensors can detect
+//       beacons. each sensor gives the location of the nearest (taxicab distance)
+//       beacon it can see. in this part, we have to find the one spot that can
+//       contain an unknown beacon in a bound search space.
+//
+// idea: we visit each row in the search space. as in 15a, we compute and sort
+//       the contributed spans for the row; when we find a row where there is 
+//       a gap between the spans, we've found the answer.
+//
+// https://adventofcode.com/2022/day/15
+//
+
 typedef struct point_t point_t;
 struct point_t {
     int x, y;

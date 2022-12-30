@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 15a - the input is a list of 2D sensor positions; the sensors can detect
+//       beacons. each sensor gives the location of the nearest (taxicab distance)
+//       beacon it can see. we are to find, for a particular Y coordinate,
+//       how many positions in that row cannot contain a beacon.
+//
+// idea: 1. sort and remove duplicate beacons
+//       2. for each sensor, compute the span in the given Y that it covers.
+//       3. sort the spans and walk them left to right counting total
+//          coverage and accounting for overlap.
+//       4. count how many beacons we know about that are in the spans.
+//
+//       step 3 minus step 4 is the answer.
+//
+// https://adventofcode.com/2022/day/15
+//
+
 typedef struct point_t point_t;
 struct point_t {
     int x, y;
@@ -40,7 +56,7 @@ int pointcomp(const void *left, const void *right)
     const point_t *pr = right;
 
     if (pl->x == pr->x)
-        return pl->y < pr->y;
+        return pl->y - pr->y;
     return pl->x - pr->x;
 }
 
@@ -60,6 +76,8 @@ int main()
 
     row = 2000000;
 
+    // read sensors
+    //
     nsensors =0;
     while (scanf("Sensor at x=%d, y=%d: closest beacon is at x=%d, y=%d\n", &sens.x, &sens.y, &beac.x, &beac.y) == 4) {
         sensors[nsensors].loc = sens;
@@ -68,8 +86,12 @@ int main()
         beacons[nbeacons++] = beac;
     }
 
+    // sort the beacons first by x, then by y
+    //
     qsort(beacons, nbeacons, sizeof(point_t), pointcomp);
 
+    // remove duplicate beacons
+    // 
     dst = 1;
     for (src = 1; src < nbeacons; src++) {
         if (beacons[src].x == beacons[dst-1].x && beacons[src].y == beacons[dst-1].y)
@@ -78,6 +100,9 @@ int main()
     }
     nbeacons = dst;
 
+    // for each sensor, compute the beacon-free span it contributes
+    // to the desired row.
+    //
     for (i = 0; i < nsensors; i++) {
         s = &sensors[i];
 
@@ -90,6 +115,9 @@ int main()
         nspans++;
     }
 
+    // sort and merge the spans, computing the total coverage
+    // along the way.
+    //
     qsort(spans, nspans, sizeof(span_t), spancomp);
 
     total = spans[0].right - spans[0].left;
@@ -110,6 +138,8 @@ int main()
         prev = curr;
     }
 
+    // remove any known beacons from the row.
+    //
     for (i = 0; i < nbeacons; i++) {
         if (beacons[i].y == row) {
             for (j = 0; j < nspans; j++) {
